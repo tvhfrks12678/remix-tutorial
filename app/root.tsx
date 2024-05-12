@@ -12,6 +12,7 @@ import {
   ScrollRestoration,
   useLoaderData,
   useNavigation,
+  useSubmit,
 } from '@remix-run/react';
 
 import appStylesHref from './app.css?url';
@@ -37,6 +38,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 export default function App() {
   const { contacts, q } = useLoaderData<typeof loader>();
   const navigation = useNavigation();
+  const submit = useSubmit();
   const [query, setQuery] = useState(q || '');
   const searching =
     navigation.location &&
