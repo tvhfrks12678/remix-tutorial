@@ -8,6 +8,8 @@ import { getContact, updateContact } from '../data';
 export const action = async ({ params, request }: ActionFunctionArgs) => {
   invariant(params.contactId, 'Missing contactId param');
   const formData = await request.formData();
+  const firstName = formData.get('first');
+  const lastName = formData.get('last');
   const updates = Object.fromEntries(formData);
   await updateContact(params.contactId, updates);
   return redirect(`/contacts/${params.contactId}`);
